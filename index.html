@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Avaldian — Ads that pay for themselves</title>
+<meta name="description" content="Avaldian runs Google Ads and Meta Ads for businesses in Lagos that need customers, not impressions. Measured properly, reported every week.">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Avaldian — Ads that pay for themselves">
+<meta property="og:description" content="Google Ads and Meta Ads for businesses in Lagos that need customers, not impressions.">
+<meta property="og:image" content="og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap">
+
+<style>
+/* Avaldian — navy-led. Deep navy bands bookend the page and carry the ice-blue accent;
+   bone sections hold the reading. Deep teal replaces ice blue wherever the ground is light. */
+:root{
+  --navy:#0B0F19;
+  --bone:#F2EFE8;
+  --ice:#7FD6E8;
+  --teal:#0E7490;
+
+  --bg:var(--bone);
+  --bg-alt:#E9E5DB;
+  --card:#FFFFFF;
+  --fg:var(--navy);
+  --fg-2:#555D6B;
+  --fg-3:#89909D;
+  --line:#DCD7CB;
+
+  --band:var(--navy);
+  --band-lift:#141A27;
+  --on-band:var(--bone);
+  --on-band-2:#8D96A8;
+  --band-line:rgba(141,150,168,.2);
+
+  --accent:var(--teal);        /* accent on light ground */
+  --accent-band:var(--ice);    /* accent on navy ground  */
+  --glow:rgba(14,116,144,.13);
+
+  --display:"Space Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif;
+  --sans:"Plus Jakarta Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:var(--navy);
+    --bg-alt:#0F1521;
+    --card:#151C2A;
+    --fg:var(--bone);
+    --fg-2:#98A1B2;
+    --fg-3:#6B7484;
+    --line:#212839;
+
+    --band:#06090F;
+    --band-lift:#141A27;
+    --on-band:var(--bone);
+    --on-band-2:#98A1B2;
+    --band-line:rgba(152,161,178,.18);
+
+    --accent:var(--ice);
+    --accent-band:var(--ice);
+    --glow:rgba(127,214,232,.12);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:var(--navy);
+  --bg-alt:#0F1521;
+  --card:#151C2A;
+  --fg:var(--bone);
+  --fg-2:#98A1B2;
+  --fg-3:#6B7484;
+  --line:#212839;
+
+  --band:#06090F;
+  --band-lift:#141A27;
+  --on-band:var(--bone);
+  --on-band-2:#98A1B2;
+  --band-line:rgba(152,161,178,.18);
+
+  --accent:var(--ice);
+  --accent-band:var(--ice);
+  --glow:rgba(127,214,232,.12);
+  color-scheme:dark;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--fg);
+  font-family:var(--sans);font-size:17px;line-height:1.6;
+  letter-spacing:-.005em;-webkit-font-smoothing:antialiased;
+}
+.wrap{
+  max-width:1020px;margin:0 auto;
+  padding-left:max(22px,env(safe-area-inset-left,0px));
+  padding-right:max(22px,env(safe-area-inset-right,0px));
+}
+.narrow{max-width:780px}
+section{padding-block:clamp(64px,10vw,108px)}
+h1,h2,h3{
+  margin:0;font-family:var(--display);font-weight:700;
+  text-wrap:balance;letter-spacing:-.03em;line-height:1.05;
+}
+p{margin:0}
+
+.eyebrow{
+  font-family:var(--display);font-size:12px;font-weight:500;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--fg-3);
+}
+
+/* ── the mark ─────────────────────────────────────────── */
+.sym{height:1em;width:auto;display:block;flex:none;overflow:visible}
+.sym .mer{fill:none;stroke:var(--sym-accent);stroke-width:3.6}
+.sym .pk{fill:none;stroke:var(--sym-peak);stroke-width:14;stroke-linecap:round;stroke-linejoin:round}
+.sym .dt{fill:var(--sym-accent)}
+
+.lockup{
+  display:inline-flex;align-items:center;gap:.52em;
+  text-decoration:none;color:inherit;
+  --sym-peak:var(--fg);--sym-accent:var(--accent);
+}
+.lockup .sym{height:2.15em}
+.wm{
+  font-family:var(--display);font-weight:700;font-size:15px;
+  letter-spacing:.26em;text-transform:uppercase;line-height:1;
+  padding-left:.08em;
+}
+.on-band .lockup,.lockup.on-band{--sym-peak:var(--on-band);--sym-accent:var(--accent-band)}
+
+/* ── navy bands ───────────────────────────────────────── */
+.band{
+  background:var(--band);color:var(--on-band);
+  --fg:var(--on-band);--fg-2:var(--on-band-2);--fg-3:var(--on-band-2);
+  --accent:var(--accent-band);
+}
+.band h1,.band h2,.band h3{color:var(--on-band)}
+
+.btn{
+  display:inline-block;background:var(--ice);color:var(--navy);
+  font-family:var(--display);font-size:16px;font-weight:700;letter-spacing:.01em;
+  padding:16px 36px;border-radius:999px;text-decoration:none;
+  transition:transform .15s ease,filter .15s ease;
+}
+.btn:hover{filter:brightness(1.08);transform:translateY(-1px)}
+
+/* ── hero ─────────────────────────────────────────────── */
+.hero-band{
+  background:var(--band);color:var(--on-band);
+  background-image:radial-gradient(ellipse 76% 64% at 50% -8%, rgba(127,214,232,.17), transparent 70%);
+}
+.mast{padding-block:34px 0;display:flex;justify-content:center}
+.hero{text-align:center;padding-block:clamp(44px,7vw,70px) clamp(58px,9vw,92px)}
+.hero .eyebrow{display:block;margin-bottom:24px;color:var(--ice)}
+.hero h1{font-size:clamp(39px,8.2vw,74px);margin-bottom:24px;color:var(--bone)}
+.hero .lede{
+  font-size:clamp(17px,2.3vw,21px);color:#9AA3B4;
+  max-width:28em;margin:0 auto 36px;line-height:1.5;letter-spacing:-.008em;
+}
+.hero .sub{display:block;margin-top:17px;font-size:14px;color:#79818F}
+
+/* ── proof ────────────────────────────────────────────── */
+.proof{background:var(--bg-alt)}
+.proof .eyebrow{color:var(--accent)}
+.proof h2{font-size:clamp(28px,5vw,44px);margin:16px 0 0}
+.cases{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(282px,1fr));
+  gap:clamp(22px,3vw,32px);margin-top:clamp(42px,6vw,60px);
+}
+.case{
+  min-width:0;padding:clamp(28px,3.4vw,38px);border-radius:18px;
+  background:var(--card);border:1px solid var(--line);
+  display:flex;flex-direction:column;
+}
+.case .tagline{
+  font-family:var(--display);font-size:11.5px;font-weight:500;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--fg-2);margin-bottom:26px;
+  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+}
+.live{display:inline-flex;align-items:center;gap:6px;color:var(--accent)}
+.live::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.case .fig{
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(54px,9.5vw,80px);line-height:.92;
+  letter-spacing:-.045em;font-variant-numeric:tabular-nums;color:var(--fg);
+}
+.case .figlab{font-size:17px;color:var(--accent);margin-top:14px;font-weight:500;letter-spacing:-.01em}
+.case .body{font-size:15.5px;color:var(--fg-2);line-height:1.62;margin-top:20px}
+.strip{
+  margin-top:24px;padding-top:20px;border-top:1px solid var(--line);
+  display:flex;flex-wrap:wrap;gap:8px 22px;
+  font-family:var(--display);font-size:12.5px;font-weight:400;color:var(--fg-2);
+  font-variant-numeric:tabular-nums;letter-spacing:.02em;
+}
+.strip b{color:var(--fg);font-weight:500}
+.note{
+  margin-top:clamp(30px,4vw,42px);font-size:14px;color:var(--fg-2);
+  max-width:46em;line-height:1.65;
+}
+
+/* ── pull quote ───────────────────────────────────────── */
+.pull{
+  background-image:radial-gradient(ellipse 60% 90% at 88% 50%, rgba(127,214,232,.1), transparent 68%);
+}
+.pull p{
+  font-family:var(--display);
+  font-size:clamp(23px,4vw,36px);font-weight:700;letter-spacing:-.028em;
+  line-height:1.22;max-width:19em;text-wrap:balance;
+}
+.pull p span{color:var(--ice)}
+
+/* ── sections ─────────────────────────────────────────── */
+h2.sec{font-size:clamp(30px,5.2vw,48px);margin-bottom:16px}
+.sec-lede{font-size:clamp(17px,2.1vw,20px);color:var(--fg-2);max-width:33em;line-height:1.55}
+.grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));
+  gap:clamp(28px,4vw,44px);margin-top:clamp(40px,5.5vw,58px);
+}
+.cell{min-width:0}
+.cell .n{
+  font-family:var(--display);font-size:12px;font-weight:500;color:var(--accent);
+  letter-spacing:.16em;display:block;margin-bottom:14px;
+}
+.cell h3{font-size:20px;margin-bottom:9px;letter-spacing:-.022em}
+.cell p{font-size:15.5px;color:var(--fg-2);line-height:1.62}
+
+.sectors{background:var(--bg-alt)}
+.tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:32px}
+.tag{
+  border:1px solid var(--line);border-radius:999px;background:var(--card);
+  padding:9px 18px;font-size:14.5px;color:var(--fg-2);
+}
+
+.trust-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));
+  gap:clamp(28px,4vw,46px);margin-top:clamp(40px,5.5vw,58px);
+}
+.trust-grid div{min-width:0;padding-top:19px;border-top:2px solid var(--accent)}
+.trust-grid h3{font-size:19px;margin-bottom:8px;letter-spacing:-.022em}
+.trust-grid p{font-size:15.5px;color:var(--fg-2);line-height:1.62}
+
+/* ── close ────────────────────────────────────────────── */
+.close{
+  text-align:center;
+  background-image:radial-gradient(ellipse 72% 76% at 50% 112%, rgba(127,214,232,.18), transparent 66%);
+}
+.close .lockup{justify-content:center}
+.close .tag-line{
+  display:block;margin:16px 0 38px;font-size:14px;color:var(--on-band-2);
+  letter-spacing:.01em;
+}
+.close h2{font-size:clamp(32px,6vw,58px);margin-bottom:18px}
+.close .lede{
+  font-size:clamp(17px,2.2vw,20px);color:var(--on-band-2);
+  max-width:28em;margin:0 auto 36px;line-height:1.52;
+}
+.contact{
+  margin-top:clamp(44px,6vw,64px);padding-top:26px;
+  border-top:1px solid var(--band-line);
+  display:flex;justify-content:center;flex-wrap:wrap;gap:10px 32px;
+  font-family:var(--display);font-size:13px;font-weight:400;color:var(--on-band-2);
+}
+.contact a{color:inherit;text-decoration:none}
+.contact a:hover b{text-decoration:underline;text-underline-offset:3px}
+.contact b{color:var(--on-band);font-weight:500}
+
+footer{
+  padding-block:30px;font-size:13px;color:var(--fg-2);text-align:center;
+  display:flex;flex-direction:column;gap:6px;
+}
+footer .t{font-family:var(--display);letter-spacing:.04em}
+
+a:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:999px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- The mark: a peak shaped like an A with no crossbar, a meridian running through it,
+     and a solid dot resting at the crest. -->
+
+<div class="hero-band">
+  <div class="wrap mast">
+    <span class="lockup on-band">
+      <svg class="sym" viewBox="13 9 94 109" aria-hidden="true">
+        <ellipse class="mer" cx="60" cy="66" rx="33" ry="52"/>
+        <path class="pk" d="M20 102 L60 34 L100 102"/>
+        <circle class="dt" cx="60" cy="14" r="5"/>
+      </svg>
+      <span class="wm">Avaldian</span>
+    </span>
+  </div>
+
+  <header class="wrap hero">
+    <span class="eyebrow">Google Ads &amp; Meta Ads · Lagos</span>
+    <h1>Ads that pay for themselves.</h1>
+    <p class="lede">We run paid campaigns for businesses that need customers, not impressions. Two channels, measured properly, reported to you every week.</p>
+    <a class="btn" href="https://wa.me/2348160814084">Start a conversation</a>
+    <span class="sub">Free review of your page or website. No call required.</span>
+  </header>
+</div>
+
+<section class="proof">
+  <div class="wrap">
+    <span class="eyebrow">What we have done</span>
+    <h2>Two businesses. Two channels.<br>Both profitable.</h2>
+
+    <div class="cases">
+      <div class="case">
+        <div class="tagline"><span>Google Ads</span><span>·</span><span>Laundry service</span></div>
+        <div class="fig">10&times;</div>
+        <div class="figlab">returned on ad spend</div>
+        <p class="body">People searching for laundry near them are already decided. They just need to find someone. We put the business at the top of that search, and the customers it brought in paid back ten times what the campaign cost.</p>
+      </div>
+
+      <div class="case">
+        <div class="tagline"><span>Meta Ads</span><span>·</span><span>Beauty studio</span><span class="live">Running now</span></div>
+        <div class="fig">&#8358;2,800</div>
+        <div class="figlab">per booked customer</div>
+        <p class="body">Instagram and Facebook reach people who were not searching for anything. Here, ₦28,000 has produced eighty-nine real conversations and ten paying bookings, with more still open.</p>
+        <div class="strip">
+          <span><b>&#8358;28,000</b> spent</span>
+          <span><b>89</b> conversations</span>
+          <span><b>10</b> bookings</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="note">Both figures come from live accounts and are shown as they stand today. They are results, not promises. Your service, your price point and your city will produce different numbers, and we would rather tell you that now than after you have paid us.</p>
+  </div>
+</section>
+
+<section class="band pull">
+  <div class="wrap narrow">
+    <p>Most agencies bill you for time.<br><span>We would rather be judged on customers.</span></p>
+  </div>
+</section>
+
+<section class="wrap narrow">
+  <h2 class="sec">How we get there.</h2>
+  <p class="sec-lede">Search and social do two different jobs. Most businesses need both, and almost nobody runs them together properly.</p>
+  <div class="grid">
+    <div class="cell">
+      <span class="n">01</span>
+      <h3>Capture demand</h3>
+      <p>Google puts you in front of people already looking for what you sell. These are the easiest customers you will ever win, and the ones your competitors are taking today.</p>
+    </div>
+    <div class="cell">
+      <span class="n">02</span>
+      <h3>Create demand</h3>
+      <p>Instagram and Facebook reach people who did not know they needed you yet. Slower to convert, far larger, and where growth actually comes from.</p>
+    </div>
+    <div class="cell">
+      <span class="n">03</span>
+      <h3>Count what happened</h3>
+      <p>Tracking is set up before a naira is spent, so you always know which ad produced which customer and exactly what that customer cost.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sectors">
+  <div class="wrap narrow">
+    <h2 class="sec">Who we work with.</h2>
+    <p class="sec-lede">Businesses where one new customer is worth real money and tends to come back. That is where paid advertising pays for itself fastest.</p>
+    <div class="tags">
+      <span class="tag">Clinics &amp; dental</span>
+      <span class="tag">Beauty &amp; wellness</span>
+      <span class="tag">Laundry &amp; home services</span>
+      <span class="tag">Fitness studios</span>
+      <span class="tag">Professional services</span>
+      <span class="tag">Real estate</span>
+      <span class="tag">Hospitality</span>
+      <span class="tag">Education</span>
+      <span class="tag">Retail &amp; e-commerce</span>
+      <span class="tag">B2B</span>
+    </div>
+  </div>
+</section>
+
+<section class="wrap narrow">
+  <h2 class="sec">You keep control.</h2>
+  <p class="sec-lede">Everything is arranged so you can stop at any point and lose nothing but a small test budget.</p>
+  <div class="trust-grid">
+    <div>
+      <h3>Your account, your name</h3>
+      <p>Ad accounts are opened in your name and we are added as a partner. You can remove us in two taps. We never ask for your password, and you pay Google and Meta directly.</p>
+    </div>
+    <div>
+      <h3>A two-week pilot first</h3>
+      <p>Small setup fee, small budget, no long contract. You decide whether to continue based on what actually happened, not on a pitch.</p>
+    </div>
+    <div>
+      <h3>Numbers every week</h3>
+      <p>Spend, enquiries, customers and cost per customer. Sent plainly. No reach, no impressions, nothing dressed up to look better than it was.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band close">
+  <div class="wrap">
+    <span class="lockup">
+      <svg class="sym" viewBox="13 9 94 109" aria-hidden="true">
+        <ellipse class="mer" cx="60" cy="66" rx="33" ry="52"/>
+        <path class="pk" d="M20 102 L60 34 L100 102"/>
+        <circle class="dt" cx="60" cy="14" r="5"/>
+      </svg>
+      <span class="wm">Avaldian</span>
+    </span>
+    <span class="tag-line">Unstoppable momentum, taken to the highest point.</span>
+    <h2>Send us your page.</h2>
+    <p class="lede">We will tell you what we would run, on which channel, and roughly what it would cost to find out whether it works for you.</p>
+    <a class="btn" href="https://wa.me/2348160814084">Start a conversation</a>
+    <div class="contact">
+      <a href="https://wa.me/2348160814084">WhatsApp <b>+234 816 081 4084</b></a>
+      <a href="mailto:avaldianworld@gmail.com">Email <b>avaldianworld@gmail.com</b></a>
+      <span>Instagram <b>@avaldian</b></span>
+    </div>
+  </div>
+</section>
+
+<footer class="wrap">
+  <p class="t">Avaldian · Lagos, Nigeria</p>
+</footer>
+
+</body>
+</html>
