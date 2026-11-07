@@ -37,4 +37,4 @@ HOW TO PUT IT ONLINE
 NOTES
   The fonts (Space Grotesk, Plus Jakarta Sans) load from Google Fonts, so
   the page needs an internet connection to look right — normal for a website.
-  The page follows the visitor's light or dark setting automatically.
+  The page follows the visitor's light or dark setting automatically. 
